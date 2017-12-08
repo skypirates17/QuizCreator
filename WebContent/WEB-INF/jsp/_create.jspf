@@ -1,0 +1,78 @@
+<div class="bs-example">
+
+    <form>
+   
+         <div class="input-group">
+              <span class="input-group-addon">Category</span>
+             <select class="form-control">
+                 <option value="0" selected>All Snippets</option>
+                 <option value="1">Featured</option>
+                 <option value="2">Most popular</option>
+                 <option value="3">Top rated</option>
+                 <option value="4">Most commented</option>
+             </select>
+        </div>
+        <br>
+         <div class="input-group">
+              <span class="input-group-addon">Sub-Category</span>
+             <select class="form-control">
+                 <option value="0">All Snippets</option>
+                 <option value="1">Featured</option>
+                 <option value="2" selected>Most popular</option>
+                 <option value="3">Top rated</option>
+                 <option value="4">Most commented</option>
+             </select>
+        </div>
+         <hr>
+        <label for="question">Question:</label>
+       
+            <textarea class="form-control" rows="4" id="question" placeholder="Question"></textarea>
+      
+        
+        <br>
+        <label for="basic-url">List of Choices:</label>
+        <div class="input-group">
+            
+            <span class="input-group-addon"><input type="radio" name="correct_answer"></span>
+            <span class="input-group-addon">Option 1</span>
+            <input type="text" id="basic-url"  class="form-control">
+        </div>
+         <br>
+        <div class="input-group">
+            <span class="input-group-addon"><input type="radio" name="correct_answer"></span>
+            <span class="input-group-addon">Option 2</span>
+            <input type="text" class="form-control">
+        </div>
+         <br>
+        <div class="input-group">
+            <span class="input-group-addon"><input type="radio" name="correct_answer"></span>
+            <span class="input-group-addon">Option 3</span>
+            <input type="text" class="form-control" >
+        </div>
+         <br>
+        <div class="input-group">
+            <span class="input-group-addon"><input type="radio" name="correct_answer"></span>
+            <span class="input-group-addon">Option 4</span>
+            <input type="text" class="form-control">
+        </div>
+         
+        
+        <br>
+
+		<label for="expaination">Correct Answer Explanation:</label>
+       
+            <textarea class="form-control" rows="4" id="expaination" placeholder="Correct Answer Explanation"></textarea>
+            
+
+        <hr>
+        <div class="text-right">
+           <button type = "button" class = "btn btn-primary btn-sm">
+              Save
+           </button>
+
+           <button type = "button" class = "btn btn-default btn-sm">
+              Cancel
+           </button>
+        </div>
+    </form>
+</div>

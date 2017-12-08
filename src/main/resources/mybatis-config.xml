@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE configuration    
+	PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<settings>
+		<!-- Globally enables or disables any caches configured in any mapper under 
+			this configuration. -->
+		<setting name="cacheEnabled" value="false" />
+
+		<!-- Globally enables or disables lazy loading. When enabled, all relations 
+			will be lazily loaded. This value can be superseded for an specific relation 
+			by using the fetchType attribute on it. -->
+		<setting name="lazyLoadingEnabled" value="true" />
+
+		<!-- Allows or disallows multiple ResultSets to be returned from a single 
+			statement (compatible driver required). -->
+		<setting name="multipleResultSetsEnabled" value="true" />
+
+		<!-- Uses the column label instead of the column name. Different drivers 
+			behave differently in this respect. Refer to the driver documentation, or 
+			test out both modes to determine how your driver behaves. -->
+		<setting name="useColumnLabel" value="true" />
+
+		<!-- Allows JDBC support for generated keys. A compatible driver is required. 
+			This setting forces generated keys to be used if set to true, as some drivers 
+			deny compatibility but still work (e.g. Derby). -->
+		<setting name="useGeneratedKeys" value="false" />
+
+		<!-- Configures the default executor. SIMPLE executor does nothing special. 
+			REUSE executor reuses prepared statements. BATCH executor reuses statements 
+			and batches updates. -->
+		<setting name="defaultExecutorType" value="SIMPLE" />
+		
+		<setting name="logImpl" value="LOG4J"/>
+	</settings>
+</configuration>  
