@@ -4,14 +4,29 @@
 
 <mapper namespace="com.quiz.mapper.QuizMapper">
 	
-	<insert id="insertStudentInfo" parameterType="map">
-		INSERT INTO STUDENT_INFO (STUDENT_NAME, STUDENT_AGE, STUDENT_ADDRESS)
-		VALUES (#{STUDENT_NAME},#{STUDENT_AGE},#{STUDENT_ADDRESS})
-	</insert>
-
-	<select id="selectStudentInfo" parameterType="map" resultType="map">
-		SELECT STUDENT_ID, STUDENT_NAME, STUDENT_AGE, STUDENT_ADDRESS
-		FROM STUDENT_INFO
+	<select id="insertQuestion" parameterType="map" resultType="java.lang.Integer">
+		INSERT INTO M_QUESTION (
+			QUESTION, 
+			CATEGORY,
+			SUB_CATEGORY,
+			ANSWER_EXPLAINATION, 
+			CREATE_DATE) 
+		VALUES
+			(#{QUESTION}, 
+			#{CATEGORY},
+			#{SUB_CATEGORY},
+			#{ANSWER_EXPLAINATION},
+			#{CREATE_DATE})
+		RETURNING QUESTION_ID
+	</select>
+	
+	<select id="insertChoices" parameterType="list" resultType="map">
+	    INSERT
+	    INTO M_CHOICES(QUESTION_ID,CHOICE,CORRECT_ANSWER,CREATE_DATE)
+	    VALUES
+	    <foreach collection="LIST_CHOICES" item="item" index="index" open="" separator=","  close="">
+	    	(#{QUESTION_ID},#{item.CHOICE},#{item.CORRECT_ANSWER},#{CREATE_DATE})
+	    </foreach>
 	</select>
 	
 </mapper>

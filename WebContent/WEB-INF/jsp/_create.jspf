@@ -30,31 +30,31 @@
 		<br>
 		<label for="basic-url">List of Choices:</label>
 		<div class="input-group">
-			<span class="input-group-addon"><input type="radio" name="CORRECT_ANSWER" value="CORRECT_ANSWER_1"></span>
+			<span class="input-group-addon"><input type="radio" name="CORRECT_ANSWER" value="CHOICE_1"></span>
 			<span class="input-group-addon">Option 1</span>
 			<input type="text" id="CHOICE_1" name="CHOICE_1" class="form-control">
 		</div>
 		<br>
 		<div class="input-group">
-			<span class="input-group-addon"><input type="radio" name="CORRECT_ANSWER" value="CORRECT_ANSWER_2"></span>
+			<span class="input-group-addon"><input type="radio" name="CORRECT_ANSWER" value="CHOICE_2"></span>
 			<span class="input-group-addon">Option 2</span>
 			<input type="text" id="CHOICE_2" name="CHOICE_2" class="form-control">
 		</div>
 		<br>
 		<div class="input-group">
-			<span class="input-group-addon"><input type="radio" name="CORRECT_ANSWER" value="CORRECT_ANSWER_3"></span>
+			<span class="input-group-addon"><input type="radio" name="CORRECT_ANSWER" value="CHOICE_3"></span>
 			<span class="input-group-addon">Option 3</span>
 			<input type="text" id="CHOICE_3" name="CHOICE_3" class="form-control" >
 		</div>
 		<br>
 		<div class="input-group">
-			<span class="input-group-addon"><input type="radio" name="CORRECT_ANSWER" value="CORRECT_ANSWER_4"></span>
+			<span class="input-group-addon"><input type="radio" name="CORRECT_ANSWER" value="CHOICE_4"></span>
 			<span class="input-group-addon">Option 4</span>
 			<input type="text" id="CHOICE_4" name="CHOICE_4" class="form-control">
 		</div>
 		<br>
 		<div class="input-group">
-			<span class="input-group-addon"><input type="radio" name="CORRECT_ANSWER" value="CORRECT_ANSWER_5"></span>
+			<span class="input-group-addon"><input type="radio" name="CORRECT_ANSWER" value="CHOICE_5"></span>
 			<span class="input-group-addon">Option 5</span>
 			<input type="text" id="CHOICE_5" name="CHOICE_5" class="form-control">
 		</div>
