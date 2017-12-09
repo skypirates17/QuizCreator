@@ -63,7 +63,7 @@
 		<textarea class="form-control" rows="4" id="ANSWER_EXPLAINATION" name="ANSWER_EXPLAINATION" placeholder="Correct Answer Explanation"></textarea>
 		<hr>
 		<div class="text-right">
-		<button type = "submit" id="BTNSAVE" class = "btn btn-primary btn-sm">
+		<button type = "submit" id="BTNSAVE" class = "btn btn-primary btn-sm" data-loading-text="<i class='fa fa-refresh fa-spin '></i> Saving Question..." >
 			Save
 			</button>
 			<button type="button" id="BTNCLEAR" class = "btn btn-default btn-sm">

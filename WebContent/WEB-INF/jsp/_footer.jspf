@@ -1,0 +1,132 @@
+		<!-- /container -->
+		<script src="js/cbpFWTabs.js"></script>
+		<script>
+			(function() {
+			
+				[].slice.call( document.querySelectorAll( '.tabs' ) ).forEach( function( el ) {
+					new CBPFWTabs( el );
+				});
+			
+			})();
+			
+			jQuery.fn.extend({
+			    disable: function(state) {
+			        return this.each(function() {
+			            this.disabled = state;
+			        });
+			    }
+			});
+			
+			$(document).ready(function() { 
+			
+				$("#BTNCLEAR").click(function(){
+					clearFields();
+				});
+			});
+			
+			function clearFields() {
+				//showNotification("Error","There was an error submitting message...",Math.floor(Math.random() * 5));
+				$("#CHOICE_1").val("");
+				$("#CHOICE_2").val("");
+				$("#CHOICE_3").val("");
+				$("#CHOICE_4").val("");
+				$("#CHOICE_5").val("");
+				$("#QuizForm input:radio").attr("checked", false);
+				new nicEditors.findEditor('QUESTION').setContent('');
+				new nicEditors.findEditor('ANSWER_EXPLAINATION').setContent('');
+			}
+			
+			function arrayReplace (thisArray, thisName, thisValue) {
+				$.each(thisArray, function(key, data) {
+				    if (this.name == thisName) 
+				        this.value=thisValue;
+				});
+			}
+			
+			$('#QuizForm').on('submit',function(e){
+				var btn = $('#BTNSAVE');
+			    btn.button('loading');
+			    $('#BTNCLEAR').disable(true);
+			    
+				var url = '<c:url value="/saveQuestion.htm" />';
+				var data = $('#QuizForm :input').serializeArray();
+				arrayReplace(data, 'QUESTION', new nicEditors.findEditor('QUESTION').getContent());
+				arrayReplace(data, 'ANSWER_EXPLAINATION', new nicEditors.findEditor('ANSWER_EXPLAINATION').getContent());
+				
+				var form = JSON.stringify(data);
+				e.preventDefault(); // avoid to execute the actual submit of the form.
+				
+			    $.ajax({
+			        type     	: 'POST',
+			        url      	: url,
+			        data     	: {form: form},
+			        success  	: function(resp) {
+			        	var obj = jQuery.parseJSON( resp );
+			        	showNotification(obj.TITLE, obj.MESSAGE, obj.ERRORTYPE);
+			        	btn.button('reset');
+			        	$('#BTNCLEAR').disable(false);
+			        	if (obj.ERRORTYPE == 2) {
+			        		var newdivcontent = '<div class="alert alert-success"><strong>Success!</strong><br>Thanks! Your message has been successfully sent. <br>And please avoid from sending this form again as NID may track us ;)</div>';
+			        		//$("#mynewform").html(newdivcontent);
+			        		clearFields();
+			        	}
+			        },
+			        error		: function() {
+			        	alert("ERROR");
+			        	
+			        	showNotification("Error","There was an error submitting message...",4);
+			        	btn.button('reset');
+			        	$('#BTNCLEAR').disable(false);
+			        }
+			    });
+			    
+			});
+			
+			function showNotification(title, message, type) {
+				//TYPE --> http://bootstrap-notify.remabledesigns.com/
+				// 1 : Info
+				// 2 : Success
+				// 3 : Warning
+				// 4 : Danger / Error
+				
+				if (type == 1) {
+					$.notify({
+						icon: 'fa fa-info-circle',
+						title: '<strong>'+ title +'</strong><br>',
+						message: message
+					},{
+							newest_on_top: true,
+							type: "info"
+					});
+				} else if (type == 2) {
+					$.notify({
+						icon: 'fa fa-check-circle',
+						title: '<strong>'+ title +'</strong><br>',
+						message: message
+					},{
+						newest_on_top: true,
+						type: 'success'
+					});
+				} else if (type == 3) {
+					$.notify({
+						icon: 'fa fa-exclamation-triangle',
+						title: '<strong>'+ title +'</strong><br>',
+						message: message
+					},{
+						newest_on_top: true,
+						type: 'warning'
+					});
+				} else if (type == 4) {
+					$.notify({
+						icon: 'fa fa-times-circle',
+						title: '<strong>'+ title +'</strong><br>',
+						message: message
+					},{
+						newest_on_top: true,
+						type: 'danger'
+					});
+				}
+			}
+		</script>
+	</body>
+</html>

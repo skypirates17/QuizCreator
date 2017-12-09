@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.quiz.mapper.QuizMapper;
 import com.quiz.service.IQuizService;
+import com.quiz.utils.Util;
 
 @Transactional
 @Service
@@ -35,7 +36,12 @@ public class QuizService implements IQuizService{
 		List<Map<String, Object>> lstChoices = new ArrayList<>();
 		for (int i=1; i<=5; i++) {
 			Map<String, Object> map = new HashMap<>();
-			map.put("CHOICE", paramMap.get("CHOICE_" + i));
+			
+			String choiceValue = Util.toString(paramMap.get("CHOICE_" + i));
+			if (Util.isNullOrEmpty(choiceValue)) {
+				continue;
+			}
+			map.put("CHOICE", choiceValue);
 			
 			// check if the correct answer
 			String strCorrectAnswer = String.valueOf(paramMap.get("CORRECT_ANSWER"));
